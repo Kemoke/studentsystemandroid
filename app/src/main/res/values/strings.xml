@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">StudentSystemAndroid</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="e_mail_address">E-Mail Address</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log in</string>
+    <string name="api_url">https://api.sis.kemoke.net</string>
+    <string name="a">asd</string>
+    <string name="register">Register</string>
+    <string name="logo">logo</string>
+    <string name="username">Username</string>
+    <string name="department_name">Department name</string>
+    <string name="add_department">Add department</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="list_programs">List Programs</string>
+    <string name="list_instructors">List Instructors</string>
+    <string name="list_students">List Students</string>
+    <string name="news">News</string>
+    <string name="departments">Departments</string>
+    <string name="students">Students</string>
+    <string name="instructors">Instructors</string>
+    <string name="programs">Programs</string>
+    <string name="courses">Courses</string>
+    <string name="sections">Sections</string>
+    <string name="news_image">News Image</string>
+    <string name="logout">Logout</string>
+    <string name="add_item">Add Item</string>
+    <string name="name">Name:</string>
+    <string name="department">Department</string>
+    <string name="list_courses">List Courses</string>
+    <string name="program_name">Program Name</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="student_id">Student Id</string>
+    <string name="year">Year</string>
+    <string name="semester">Semester</string>
+    <string name="cgpa">CGPA</string>
+    <string name="program">Program</string>
+    <string name="list_section">List Section</string>
+    <string name="instructor_id">Instructor Id</string>
+    <string name="course_name">Course Name</string>
+    <string name="course_code">Course Code</string>
+    <string name="ects_value">Ects Value</string>
+    <string name="section_number">Section Number</string>
+    <string name="section_capacity">Section Capacity</string>
+    <string name="search">Search</string>
+    <string name="department_">Department:</string>
+    <string name="instructor_id_">Instructor ID:</string>
+    <string name="program_">Program:</string>
+    <string name="student_id_">Student ID:</string>
+    <string name="year_">Year:</string>
+    <string name="semester_">Semester:</string>
+    <string name="cgpa_">CGPA:</string>
+    <string name="e_mail">E-Mail:</string>
+    <string name="code">Code:</string>
+    <string name="section">Section</string>
+    <string name="course">Course:</string>
+    <string name="capacity">Capacity:</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

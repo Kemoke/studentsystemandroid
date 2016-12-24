@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kemoke.ius.studentsystemandroid">
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".util.ThisApplication"
+        android:allowBackup="true"
+        android:fullBackupContent="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activities.LoginActivity"/>
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:parentActivityName=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.department.AddDepartmentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Department"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.department.EditDepartmentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Department"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.department.ShowDepartmentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Department"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.program.AddProgramActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Program"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.program.EditProgramActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Program"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.program.ShowProgramActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Program"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.student.AddStudentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Student"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.student.EditStudentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Student"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.student.ShowStudentActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Student"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.instructor.AddInstructorActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Instructor"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.instructor.EditInstructorActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Instructor"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.instructor.ShowInstructorActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Instructor"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.course.AddCourseActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Course"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.course.EditCourseActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Course"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.course.ShowCourseActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Course"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.section.AddSectionActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Add Section"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.section.EditSectionActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Edit Section"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.admin.section.ShowSectionActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:label="Section"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activities.LaunchActivity"
+            android:theme="@style/SplashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>
