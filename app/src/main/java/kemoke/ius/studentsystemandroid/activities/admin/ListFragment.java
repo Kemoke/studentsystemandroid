@@ -35,8 +35,8 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
     @BindView(R.id.add_button)
     FloatingActionButton addButton;
     protected ProgressDialog progressDialog;
-    final List<T> items;
-    final CrudAdapter<? extends RecyclerView.ViewHolder, T> adapter;
+    protected final List<T> items;
+    protected final CrudAdapter<? extends RecyclerView.ViewHolder, T> adapter;
     final Class editActivity;
     final Class showActivity;
     final Class addActivity;

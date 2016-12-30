@@ -6,6 +6,8 @@
         android:id="@+id/menu_delete"/>
     <item android:title="@string/department"
         android:id="@+id/menu_department"/>
+    <item android:title="@string/curriculum"
+        android:id="@+id/menu_curriculum"/>
     <item android:title="@string/list_courses"
         android:id="@+id/menu_courses"/>
     <item android:title="@string/list_students"

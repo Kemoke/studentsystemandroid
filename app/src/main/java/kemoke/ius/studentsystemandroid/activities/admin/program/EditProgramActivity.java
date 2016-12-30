@@ -58,7 +58,6 @@ public class EditProgramActivity extends EditActivity<Program> implements Callba
             depNames[i] = departments.get(i).name;
         }
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, depNames);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         deptSpinner.setAdapter(adapter);
         deptSpinner.setSelection(((ArrayAdapter<String>)deptSpinner.getAdapter()).getPosition(item.department.name));
         deptSpinner.setTitle("Select Department");

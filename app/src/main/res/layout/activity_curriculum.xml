@@ -6,12 +6,30 @@
     android:layout_height="match_parent"
     tools:context="kemoke.ius.studentsystemandroid.activities.MainActivity">
 
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
     <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
-
+        android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:id="@+id/courses"/>
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_button"
         android:layout_width="wrap_content"

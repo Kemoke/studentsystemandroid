@@ -13,106 +13,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.LoginActivity"/>
         <activity
-            android:name=".activities.RegisterActivity"
-            android:parentActivityName=".activities.LoginActivity" />
-        <activity
-            android:name=".activities.MainActivity"
-            android:label="@string/title_activity_main"
-            android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.department.AddDepartmentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Department"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.department.EditDepartmentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Department"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.department.ShowDepartmentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Department"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.program.AddProgramActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Program"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.program.EditProgramActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Program"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.program.ShowProgramActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Program"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.student.AddStudentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Student"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.student.EditStudentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Student"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.student.ShowStudentActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Student"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.instructor.AddInstructorActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Instructor"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.instructor.EditInstructorActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Instructor"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.instructor.ShowInstructorActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Instructor"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.course.AddCourseActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Course"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.course.EditCourseActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Course"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.course.ShowCourseActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Course"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.section.AddSectionActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Add Section"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.section.EditSectionActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Edit Section"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity
-            android:name=".activities.admin.section.ShowSectionActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:label="Section"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activities.LaunchActivity"
+            android:name=".activities.LaunchActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -120,6 +22,118 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.RegisterActivity"
+            android:parentActivityName=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.MainActivity"
+            android:label="@string/title_activity_main"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.department.AddDepartmentActivity"
+            android:label="Add Department"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.department.EditDepartmentActivity"
+            android:label="Edit Department"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.department.ShowDepartmentActivity"
+            android:label="Department"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.program.AddProgramActivity"
+            android:label="Add Program"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.program.EditProgramActivity"
+            android:label="Edit Program"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.program.ShowProgramActivity"
+            android:label="Program"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.student.AddStudentActivity"
+            android:label="Add Student"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.student.EditStudentActivity"
+            android:label="Edit Student"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.student.ShowStudentActivity"
+            android:label="Student"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.instructor.AddInstructorActivity"
+            android:label="Add Instructor"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.instructor.EditInstructorActivity"
+            android:label="Edit Instructor"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.instructor.ShowInstructorActivity"
+            android:label="Instructor"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.course.AddCourseActivity"
+            android:label="Add Course"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.course.EditCourseActivity"
+            android:label="Edit Course"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.course.ShowCourseActivity"
+            android:label="Course"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.section.AddSectionActivity"
+            android:label="Add Section"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.section.EditSectionActivity"
+            android:label="Edit Section"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.admin.section.ShowSectionActivity"
+            android:label="Section"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
+            android:name=".activities.admin.program.CurriculumActivity"
+            android:label="@string/title_activity_curriculum"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="kemoke.ius.studentsystemandroid.activities.MainActivity" />
+        </activity>
+        <activity android:name=".activities.student.TimetableActivity"></activity>
     </application>
 
 </manifest>

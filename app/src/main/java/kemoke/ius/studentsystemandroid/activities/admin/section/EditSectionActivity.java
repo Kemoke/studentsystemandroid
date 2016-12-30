@@ -49,8 +49,8 @@ public class EditSectionActivity extends EditActivity<Section>{
 
     @Override
     protected void loadItem(Section item) {
-        number.setText(item.number);
-        capacity.setText(item.capacity);
+        number.setText(String.valueOf(item.number));
+        capacity.setText(String.valueOf(item.capacity));
     }
 
     @Override

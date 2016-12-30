@@ -3,6 +3,7 @@ package kemoke.ius.studentsystemandroid.models;
 import android.os.Parcel;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonValue;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CurriculumCourse extends BaseModel {
@@ -65,6 +66,11 @@ public class CurriculumCourse extends BaseModel {
         No,
         University,
         Faculty,
-        Program
+        Program;
+
+        @JsonValue
+        public int value(){
+            return ordinal();
+        }
     }
 }

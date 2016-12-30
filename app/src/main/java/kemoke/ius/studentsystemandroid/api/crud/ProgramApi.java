@@ -2,6 +2,7 @@ package kemoke.ius.studentsystemandroid.api.crud;
 
 import java.util.List;
 
+import kemoke.ius.studentsystemandroid.models.CurriculumCourse;
 import kemoke.ius.studentsystemandroid.models.Program;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -44,4 +45,7 @@ public interface ProgramApi {
 
     @DELETE("/program/{id}")
     Call<String> delete(@Path("id") int id);
+
+    @POST("/program/{id}/curriculum")
+    Call<List<CurriculumCourse>> setCurriculum(@Path("id") int id, @Body List<CurriculumCourse> curriculum);
 }

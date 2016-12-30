@@ -71,7 +71,7 @@ public class CourseListAdapter extends CrudAdapter<CourseListAdapter.ViewHolder,
         }
     }
 
-    private class Filter extends android.widget.Filter{
+    public class Filter extends android.widget.Filter{
 
         @Override
         protected FilterResults performFiltering(CharSequence input) {
