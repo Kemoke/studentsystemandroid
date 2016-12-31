@@ -23,7 +23,7 @@ public class Course extends BaseModel {
     public String code;
     public double ects;
     public Program program;
-    public List<Section> Sections;
+    public List<Section> sections;
 
     public Course(String name, String code, double ects, Program program) {
         this.name = name;
@@ -41,7 +41,7 @@ public class Course extends BaseModel {
         this.code = in.readString();
         this.ects = in.readDouble();
         this.program = in.readParcelable(Program.class.getClassLoader());
-        this.Sections = in.createTypedArrayList(Section.CREATOR);
+        this.sections = in.createTypedArrayList(Section.CREATOR);
     }
 
     @Override
@@ -56,6 +56,6 @@ public class Course extends BaseModel {
         dest.writeString(this.code);
         dest.writeDouble(this.ects);
         dest.writeParcelable(this.program, flags);
-        dest.writeTypedList(this.Sections);
+        dest.writeTypedList(this.sections);
     }
 }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="horizontal"
+    android:paddingTop="1dp">
+
+    <TextView
+        android:id="@+id/hourLabel"
+        android:layout_width="26sp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@color/white"
+        android:paddingRight="2dp"
+        android:text="16"
+        android:textAlignment="textEnd"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/monLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="CS203"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tueLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="CS203"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/wedLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="CS203"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/thuLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="CS203"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/friLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="1dp"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:gravity="center"
+        android:minHeight="50dp"
+        android:text="CS203"
+        android:textSize="20sp" />
+</LinearLayout>

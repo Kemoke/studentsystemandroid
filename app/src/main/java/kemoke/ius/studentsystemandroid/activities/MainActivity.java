@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_sections:
                 currentFragment = new SectionListFragment();
-                setTitle("Sections");
+                setTitle("sections");
                 break;
         }
         getSupportFragmentManager().beginTransaction()
