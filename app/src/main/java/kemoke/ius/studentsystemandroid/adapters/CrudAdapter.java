@@ -9,8 +9,13 @@ import java.util.List;
 
 import kemoke.ius.studentsystemandroid.models.BaseModel;
 
+/**
+ * Generic adapter for showing list of CRUD models
+ * @param <VH> Viewholder for views of crud models
+ * @param <T> Model for crud operations
+ */
 public abstract class CrudAdapter<VH extends RecyclerView.ViewHolder, T extends BaseModel> extends RecyclerView.Adapter<VH> implements Filterable {
-    int position;
+    private int position;
 
     public void setItems(List<T> items) {
         this.items = items;
@@ -66,7 +71,7 @@ public abstract class CrudAdapter<VH extends RecyclerView.ViewHolder, T extends 
         this.position = position;
     }
 
-    protected String getAbbr(String input) {
+    String getAbbr(String input) {
         String abbr = "";
         for (int i = 0; i < input.length(); i++) {
             if (Character.isUpperCase(input.charAt(i))) {

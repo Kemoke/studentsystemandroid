@@ -13,6 +13,11 @@ import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.BaseModel;
 import kemoke.ius.studentsystemandroid.util.EditCallback;
 
+/**
+ * This activity serves as generic implementation of Editing an item.
+ * @param <T> Model for crud operations
+ */
+@SuppressWarnings("ConstantConditions")
 public abstract class EditActivity<T extends BaseModel> extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;

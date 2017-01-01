@@ -15,13 +15,12 @@ import okhttp3.Response;
 import static kemoke.ius.studentsystemandroid.util.ThisApplication.getThisApplication;
 
 /**
- * Created by Kemoke on 24.11.2016..
+ * Interceptor for adding auth tokens to requests, and handling authentication.
  */
-
-public class AuthInterceptor implements Interceptor {
+class AuthInterceptor implements Interceptor {
     private Context context;
 
-    public AuthInterceptor(Context context){
+    AuthInterceptor(Context context){
         this.context = context;
     }
 
@@ -30,8 +29,8 @@ public class AuthInterceptor implements Interceptor {
         Request request = chain.request();
         HttpUrl httpUrl = request.url();
         Request intercept = request.newBuilder()
-                .addHeader("X-Auth-Token", getThisApplication().getToken())
-                .addHeader("Accept", "application/json, text/plain")
+                .header("X-Auth-Token", getThisApplication().getToken())
+                .header("Accept", "application/json")
                 .build();
         Response response = chain.proceed(intercept);
         if(httpUrl.toString().contains("auth")){

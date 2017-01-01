@@ -14,12 +14,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+/**
+ * This activity loads auth token and user type from cache and checks if they are valid.
+ * Also used for showing the initial splash screen.
+ * If token is valid user is redirected to MainActivity.
+ * If token is invalid user is redirected to LoginActivity.
+ */
 public class LaunchActivity extends AppCompatActivity implements Callback<User> {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.LoginApi().self().enqueue(this);
+        HttpApi.AuthApi().self().enqueue(this);
     }
 
     @Override

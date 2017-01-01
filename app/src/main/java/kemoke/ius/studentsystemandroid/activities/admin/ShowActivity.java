@@ -10,6 +10,11 @@ import butterknife.ButterKnife;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.BaseModel;
 
+/**
+ * This activity serves as generic implementation of showing an item details.
+ * @param <T> Model for crud operations
+ */
+@SuppressWarnings("ConstantConditions")
 public abstract class ShowActivity<T extends BaseModel> extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;

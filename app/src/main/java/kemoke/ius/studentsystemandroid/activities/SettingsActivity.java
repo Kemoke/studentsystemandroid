@@ -5,6 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 
 import kemoke.ius.studentsystemandroid.R;
 
+/**
+ * Activity for handling application settings.
+ */
+@SuppressWarnings("ConstantConditions")
 public class SettingsActivity extends AppCompatActivity {
 
     @Override

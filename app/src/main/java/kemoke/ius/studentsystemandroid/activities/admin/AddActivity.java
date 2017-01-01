@@ -14,6 +14,11 @@ import kemoke.ius.studentsystemandroid.models.BaseModel;
 import kemoke.ius.studentsystemandroid.util.AddCallback;
 import retrofit2.Callback;
 
+/**
+ * This activity serves as generic implementation for Adding an item.
+ * @param <T> Model for crud operations
+ */
+@SuppressWarnings("ConstantConditions")
 public abstract class AddActivity<T extends BaseModel> extends AppCompatActivity {
     @BindView(R.id.toolbar)
     Toolbar toolbar;

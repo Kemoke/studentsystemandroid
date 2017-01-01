@@ -8,7 +8,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 
-public interface LoginApi {
+public interface AuthApi {
     @POST("/auth/login")
     @FormUrlEncoded
     Call<TokenJson> login(@Field("email") String email, @Field("password") String password);

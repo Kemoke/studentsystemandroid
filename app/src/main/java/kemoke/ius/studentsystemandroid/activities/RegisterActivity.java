@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
-import kemoke.ius.studentsystemandroid.api.LoginApi;
+import kemoke.ius.studentsystemandroid.api.AuthApi;
 import kemoke.ius.studentsystemandroid.models.User;
 import kemoke.ius.studentsystemandroid.util.TokenJson;
 import retrofit2.Call;
@@ -24,6 +24,10 @@ import retrofit2.Response;
 
 import static kemoke.ius.studentsystemandroid.util.ThisApplication.getThisApplication;
 
+/**
+ * This application handles admin registration.
+ * Only used for testing, will be removed when app goes live.
+ */
 public class RegisterActivity extends AppCompatActivity implements Callback<User>{
 
     @BindView(R.id.username)
@@ -46,8 +50,8 @@ public class RegisterActivity extends AppCompatActivity implements Callback<User
 
     @OnClick(R.id.register_button)
     public void onRegisterClick() {
-        LoginApi loginApi = HttpApi.LoginApi();
-        loginApi.register(username.getText().toString(), email.getText().toString(), password.getText().toString())
+        AuthApi authApi = HttpApi.AuthApi();
+        authApi.register(username.getText().toString(), email.getText().toString(), password.getText().toString())
                 .enqueue(this);
         progressDialog.setMessage("Registering");
         progressDialog.setIndeterminate(true);
@@ -60,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements Callback<User
         if(response.code() == 200){
             User user = response.body();
             getThisApplication().setUser(user);
-            HttpApi.LoginApi().login(email.getText().toString(), password.getText().toString()).enqueue(loginCallback);
+            HttpApi.AuthApi().login(email.getText().toString(), password.getText().toString()).enqueue(loginCallback);
         } else {
             Toast.makeText(this, response.errorBody().toString(), Toast.LENGTH_SHORT).show();
             progressDialog.hide();

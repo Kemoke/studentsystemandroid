@@ -29,6 +29,10 @@ import kemoke.ius.studentsystemandroid.models.BaseModel;
 import kemoke.ius.studentsystemandroid.util.DeleteCallback;
 import kemoke.ius.studentsystemandroid.util.InitCallback;
 
+/**
+ * This fragment serves as generic implementation for displaying items.
+ * @param <T> Model for crud operations
+ */
 public abstract class ListFragment<T extends BaseModel> extends Fragment implements AdapterView.OnItemClickListener, SearchView.OnQueryTextListener {
     @BindView(R.id.list_view)
     RecyclerView listView;

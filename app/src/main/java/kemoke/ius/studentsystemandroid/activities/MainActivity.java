@@ -35,6 +35,11 @@ import retrofit2.Response;
 
 import static kemoke.ius.studentsystemandroid.util.ThisApplication.getThisApplication;
 
+/**
+ * This activity serves as the container for the whole application.
+ * It contains the navigation drawer and toolbar.
+ * Depending on which nav item is selected the corresponding Fragment is injected into ContentView.
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Callback<User> {
 
@@ -70,7 +75,7 @@ public class MainActivity extends AppCompatActivity
         navView.setNavigationItemSelectedListener(this);
         User user = getThisApplication().getUser();
         if (user == null) {
-            HttpApi.LoginApi().self().enqueue(this);
+            HttpApi.AuthApi().self().enqueue(this);
         } else {
             nameView.setText(user.firstName + " " + user.lastName);
             emailView.setText(user.email);

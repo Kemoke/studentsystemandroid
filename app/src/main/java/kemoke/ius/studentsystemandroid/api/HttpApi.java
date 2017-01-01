@@ -13,10 +13,14 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
+/**
+ * Contains retrofit implementations for api services.
+ * Uses singleton pattern.
+ */
 @SuppressWarnings("unused")
 public class HttpApi {
     private static Retrofit retrofit;
-    private static LoginApi loginApi;
+    private static AuthApi authApi;
     private static DepartmentApi departmentApi;
     private static ProgramApi programApi;
     private static CourseApi courseApi;
@@ -39,8 +43,8 @@ public class HttpApi {
         isInit = true;
     }
 
-    public static LoginApi LoginApi(){
-        return getOrCreate(loginApi, LoginApi.class);
+    public static AuthApi AuthApi(){
+        return getOrCreate(authApi, AuthApi.class);
     }
 
     public static DepartmentApi DepartmentApi(){

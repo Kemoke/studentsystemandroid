@@ -1,5 +1,6 @@
 package kemoke.ius.studentsystemandroid.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -15,6 +16,10 @@ import android.widget.Spinner;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.CurriculumCourse;
 
+/**
+ * Fragment that defines dialog view for setting Course properties when adding them into Curriculum
+ */
+@SuppressWarnings("ConstantConditions")
 public class CurriculumAddFragment extends AppCompatDialogFragment {
     @NonNull
     @Override
@@ -23,7 +28,7 @@ public class CurriculumAddFragment extends AppCompatDialogFragment {
         final CurriculumCourse addedCourse = getArguments().getParcelable("course");
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Add Course");
-        View alertView = LayoutInflater.from(getContext()).inflate(R.layout.curriculum_add_dialog, null, false);
+        @SuppressLint("InflateParams") View alertView = LayoutInflater.from(getContext()).inflate(R.layout.curriculum_add_dialog, null, false);
         builder.setView(alertView);
         final EditText year = (EditText) alertView.findViewById(R.id.year);
         final EditText semester = (EditText) alertView.findViewById(R.id.semester);
