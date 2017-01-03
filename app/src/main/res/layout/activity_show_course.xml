@@ -44,8 +44,8 @@
             android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/namelabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -64,8 +64,8 @@
             android:layout_height="wrap_content"
             android:text="cs201"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/namelabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/namelabel" />
 
         <TextView
@@ -85,8 +85,8 @@
             android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/proglabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/code" />
 
 

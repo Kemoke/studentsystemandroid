@@ -44,8 +44,8 @@
             android:paddingLeft="5dp"
             android:text="1"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/sectionlabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -62,11 +62,11 @@
             android:id="@+id/course"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="wateva"
             android:paddingLeft="5dp"
+            android:text="wateva"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/courselabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sectionlabel" />
 
         <TextView
@@ -86,8 +86,8 @@
             android:paddingLeft="5dp"
             android:text="20/50"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/caplabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/course" />
 
 

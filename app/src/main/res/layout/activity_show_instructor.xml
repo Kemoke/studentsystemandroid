@@ -44,8 +44,8 @@
             android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/namelabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -65,8 +65,8 @@
             android:paddingLeft="5dp"
             android:text="asd@asd.sad"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/emaillabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/namelabel" />
 
         <TextView
@@ -86,8 +86,8 @@
             android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/idlabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/emaillabel" />
 
         <TextView
@@ -107,8 +107,8 @@
             android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toRightOf="@id/deptlabel"
+            app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/idlabel" />
 
     </android.support.constraint.ConstraintLayout>

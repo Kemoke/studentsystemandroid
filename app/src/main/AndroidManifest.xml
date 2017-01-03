@@ -133,7 +133,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="kemoke.ius.studentsystemandroid.activities.MainActivity" />
         </activity>
-        <activity android:name=".activities.student.TimetableActivity"></activity>
+        <activity android:name=".activities.student.TimetableFragment"></activity>
     </application>
 
 </manifest>

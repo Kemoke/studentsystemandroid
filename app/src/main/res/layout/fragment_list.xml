@@ -10,7 +10,7 @@
         android:id="@+id/list_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_button"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="24dp"
-        app:srcCompat="@drawable/ic_add_white_24dp"
         app:fabSize="normal"
-        app:pressedTranslationZ="12dp" />
+        app:pressedTranslationZ="12dp"
+        app:srcCompat="@drawable/ic_add_white_24dp" />
 </android.support.design.widget.CoordinatorLayout>

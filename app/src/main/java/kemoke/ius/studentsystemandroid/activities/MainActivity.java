@@ -27,6 +27,8 @@ import kemoke.ius.studentsystemandroid.activities.admin.program.ProgramListFragm
 import kemoke.ius.studentsystemandroid.activities.admin.section.SectionListFragment;
 import kemoke.ius.studentsystemandroid.activities.admin.student.StudentListFragment;
 import kemoke.ius.studentsystemandroid.activities.news.NewsFragment;
+import kemoke.ius.studentsystemandroid.activities.student.RegisterFragment;
+import kemoke.ius.studentsystemandroid.activities.student.TimetableFragment;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.User;
 import retrofit2.Call;
@@ -54,32 +56,35 @@ public class MainActivity extends AppCompatActivity
     TextView emailView;
     int selectedItem;
     Fragment currentFragment;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        initNavDrawer();
+        loadUserInfo();
+        loadNews(savedInstanceState);
+    }
+
+    private void initNavDrawer() {
         nameView = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_full_name);
         emailView = (TextView) navView.getHeaderView(0).findViewById(R.id.nav_email);
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
-        switch (getThisApplication().getUserType()) {
-            case "Admin":
-                navView.inflateMenu(R.menu.drawer_admin_menu);
-                break;
+        if (getThisApplication().getUserType().contains("Admin")) {
+            navView.inflateMenu(R.menu.drawer_admin_menu);
+        } else if (getThisApplication().getUserType().contains("Student")) {
+            navView.inflateMenu(R.menu.drawer_student_menu);
         }
         toggle.syncState();
         navView.setNavigationItemSelectedListener(this);
-        User user = getThisApplication().getUser();
-        if (user == null) {
-            HttpApi.AuthApi().self().enqueue(this);
-        } else {
-            nameView.setText(user.firstName + " " + user.lastName);
-            emailView.setText(user.email);
-        }
+    }
+
+    private void loadNews(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             selectedItem = savedInstanceState.getInt("selectedItem", -1);
         } else {
@@ -89,6 +94,16 @@ public class MainActivity extends AppCompatActivity
             onNavigationItemSelected(R.id.nav_news);
         } else {
             onNavigationItemSelected(selectedItem);
+        }
+    }
+
+    private void loadUserInfo() {
+        user = getThisApplication().getUser();
+        if (user == null) {
+            HttpApi.AuthApi().self().enqueue(this);
+        } else {
+            nameView.setText(user.firstName + " " + user.lastName);
+            emailView.setText(user.email);
         }
     }
 
@@ -148,11 +163,19 @@ public class MainActivity extends AppCompatActivity
                 currentFragment = new SectionListFragment();
                 setTitle("sections");
                 break;
+            case R.id.nav_timetable:
+                currentFragment = new TimetableFragment();
+                setTitle("Timetable");
+                break;
+            case R.id.nav_registration:
+                currentFragment = new RegisterFragment();
+                setTitle("Registration");
+                break;
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_view, currentFragment, "main")
                 .commit();
-        if (currentFragment.getClass() != NewsFragment.class) {
+        if (getThisApplication().getUserType().equals("Admin") && currentFragment.getClass() != NewsFragment.class) {
             if (searchView != null) {
                 searchView.setOnQueryTextListener((ListFragment) currentFragment);
                 searchView.setVisibility(View.VISIBLE);

@@ -58,20 +58,28 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.list_fragment, container, false);
+        View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, view);
-        listView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        listView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        listView.setAdapter(adapter);
+        initListView();
+        initProgressDialog();
+        loadItems(new InitCallback<>(getContext(), items, listView, progressDialog));
+        return view;
+    }
+
+    private void initProgressDialog() {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Loading");
         progressDialog.show();
+    }
+
+    private void initListView() {
+        listView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        listView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        listView.setAdapter(adapter);
         registerForContextMenu(listView);
         listView.setClickable(true);
         adapter.setOnItemClickListener(this);
-        loadItems(new InitCallback<>(getContext(), items, listView, progressDialog));
-        return view;
     }
 
     @Override

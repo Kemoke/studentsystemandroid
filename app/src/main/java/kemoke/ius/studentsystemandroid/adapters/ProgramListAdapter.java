@@ -21,7 +21,7 @@ public class ProgramListAdapter extends CrudAdapter<ProgramListAdapter.ViewHolde
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.program_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_program, parent, false);
         return new ViewHolder(view);
     }
 

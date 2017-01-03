@@ -4,9 +4,10 @@
     android:id="@+id/activity_timetable"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kemoke.ius.studentsystemandroid.activities.student.TimetableActivity">
+    tools:context="kemoke.ius.studentsystemandroid.activities.student.TimetableFragment">
+
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/timetable"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/timetable"/>
+        android:layout_height="match_parent" />
 </RelativeLayout>

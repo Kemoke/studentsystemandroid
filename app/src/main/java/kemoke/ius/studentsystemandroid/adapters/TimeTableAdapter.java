@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -17,18 +16,20 @@ import kemoke.ius.studentsystemandroid.models.Section;
 import kemoke.ius.studentsystemandroid.models.TimeIndex;
 
 public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.ViewHolder> {
-    private List<Section[]> sectionstacks;
+    private String[][] courseCodes;
 
     public TimeTableAdapter(List<Course> courses) {
-        sectionstacks = new ArrayList<>(40);
-        for (Section[] section : sectionstacks) {
-            section = new Section[5];
+        courseCodes = new String[8][5];
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 5; j++) {
+                courseCodes[i][j] = "";
+            }
         }
         for (Course course : courses) {
             for (Section section : course.sections) {
                 for (TimeIndex timeIndex : section.timeTable) {
                     for (int i = timeIndex.startTime; i < timeIndex.endTime; i++) {
-                        sectionstacks.get(i)[timeIndex.day] = section;
+                        courseCodes[i][timeIndex.day] += (courseCodes[i][timeIndex.day].length() != 0 ? "\n" : "") + section.course.code;
                     }
                 }
             }
@@ -37,26 +38,22 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.timetable_grid_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_timetable, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Section[] sections = sectionstacks.get(position);
+        String[] codes = courseCodes[position];
         holder.hourLabel.setText(String.valueOf(position+8));
         for (int i = 0; i < 5; i++) {
-            if(sections[i] == null){
-                holder.getDayView(i).setText("");
-            } else {
-                holder.getDayView(i).setText(holder.getDayView(i).getText() + "\n" + sections[i].course.code);
-            }
+            holder.getDayView(i).setText(codes[i]);
         }
     }
 
     @Override
     public int getItemCount() {
-        return 40;
+        return 8;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -78,7 +75,7 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
             ButterKnife.bind(this, itemView);
         }
 
-        public TextView getDayView(int i){
+        TextView getDayView(int i){
             switch (i){
                 case 0:
                     return monLabel;

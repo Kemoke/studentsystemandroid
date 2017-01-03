@@ -26,46 +26,48 @@
         android:layout_height="match_parent"
         android:padding="16dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
         <TextView
+            android:id="@+id/namelabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/name"
-            android:id="@+id/namelabel"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <TextView
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            android:paddingLeft="5dp"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/namelabel"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/namelabel" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/deptlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/department_"
-            android:id="@+id/deptlabel"
-            app:layout_constraintLeft_toLeftOf="parent"
             android:textSize="20sp"
             android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/namelabel"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/namelabel" />
+
         <TextView
             android:id="@+id/dept"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="wawawawa"
             android:textSize="20sp"
-            android:paddingLeft="5dp"
-            app:layout_constraintTop_toBottomOf="@id/namelabel"
+            app:layout_constraintLeft_toRightOf="@id/deptlabel"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintLeft_toRightOf="@id/deptlabel" />
-
+            app:layout_constraintTop_toBottomOf="@id/namelabel" />
 
 
     </android.support.constraint.ConstraintLayout>

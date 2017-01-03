@@ -28,7 +28,7 @@ public class CurriculumAddFragment extends AppCompatDialogFragment {
         final CurriculumCourse addedCourse = getArguments().getParcelable("course");
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         builder.setTitle("Add Course");
-        @SuppressLint("InflateParams") View alertView = LayoutInflater.from(getContext()).inflate(R.layout.curriculum_add_dialog, null, false);
+        @SuppressLint("InflateParams") View alertView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_curriculum, null, false);
         builder.setView(alertView);
         final EditText year = (EditText) alertView.findViewById(R.id.year);
         final EditText semester = (EditText) alertView.findViewById(R.id.semester);

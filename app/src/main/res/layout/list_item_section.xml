@@ -2,72 +2,75 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/selectableItemBackground"
+    android:orientation="vertical"
     android:padding="16dp">
+
     <TextView
+        android:id="@+id/numberLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Section "
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        android:id="@+id/numberLabel"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"/>
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
+        android:id="@+id/number"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="1"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        android:id="@+id/number"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/numberLabel"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/numberLabel"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:id="@+id/courseLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/courseLabel"
         android:text="Course: "
-        android:textStyle="bold"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/number"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/number" />
+
     <TextView
+        android:id="@+id/course"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/course"
         android:text="Something"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/number"
+        app:layout_constraintLeft_toRightOf="@+id/courseLabel"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/courseLabel" />
+        app:layout_constraintTop_toBottomOf="@+id/number" />
 
     <TextView
+        android:id="@+id/proglabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Instructor: "
-        tools:layout_constraintLeft_creator="1"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/course"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:id="@+id/proglabel" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/course"
+        tools:layout_constraintLeft_creator="1" />
 
     <TextView
-        android:text="TextView"
+        android:id="@+id/instructor"
         android:layout_width="0dp"
-        android:textSize="16sp"
         android:layout_height="wrap_content"
+        android:text="TextView"
+        android:textSize="16sp"
         app:layout_constraintLeft_toRightOf="@+id/proglabel"
-        app:layout_constraintTop_toBottomOf="@+id/course"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/instructor" />
+        app:layout_constraintTop_toBottomOf="@+id/course" />
 </android.support.constraint.ConstraintLayout>

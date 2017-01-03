@@ -20,7 +20,7 @@ import kemoke.ius.studentsystemandroid.util.ThisApplication;
 public class InstructorListAdapter extends CrudAdapter<InstructorListAdapter.ViewHolder, Instructor> {
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.instructor_list_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_instructor, parent, false);
 
         return new ViewHolder(view);
     }

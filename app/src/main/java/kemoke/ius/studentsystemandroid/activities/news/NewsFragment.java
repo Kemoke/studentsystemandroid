@@ -36,7 +36,7 @@ public class NewsFragment extends Fragment implements Callback<List<Article>> {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.news_fragment_layout, container, false);
+        View view = inflater.inflate(R.layout.fragment_news, container, false);
         ButterKnife.bind(this, view);
         DisplayMetrics displayMetrics = getContext().getResources().getDisplayMetrics();
         int cols = Math.round((displayMetrics.widthPixels / displayMetrics.density) / 320);

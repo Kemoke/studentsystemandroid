@@ -154,4 +154,7 @@
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_curriculum">CurriculumActivity</string>
     <string name="curriculum">Curriculum</string>
+    <string name="timetable">Timetable</string>
+    <string name="course_registration">Course Registration</string>
+    <string name="grades">Grades</string>
 </resources>

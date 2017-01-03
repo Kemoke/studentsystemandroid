@@ -110,6 +110,7 @@
             app:layout_constraintLeft_toRightOf="@id/proglabel"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/idlabel" />
+
         <TextView
             android:id="@+id/yearlabel"
             android:layout_width="wrap_content"
@@ -134,10 +135,10 @@
             android:id="@+id/semesterlabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="@string/semester_"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:paddingLeft="5dp"
             app:layout_constraintLeft_toRightOf="@id/year"
             app:layout_constraintTop_toBottomOf="@id/proglabel" />
 
@@ -155,10 +156,10 @@
             android:id="@+id/cgpalabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
             android:text="@string/cgpa_"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:paddingLeft="5dp"
             app:layout_constraintLeft_toRightOf="@id/semester"
             app:layout_constraintTop_toBottomOf="@id/proglabel" />
 
