@@ -20,7 +20,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static kemoke.ius.studentsystemandroid.api.HttpApi.AuthApi;
+import static kemoke.ius.studentsystemandroid.api.HttpApi.authApi;
 import static kemoke.ius.studentsystemandroid.util.ThisApplication.getThisApplication;
 
 public class LoginActivity extends AppCompatActivity implements Callback<TokenJson>, TextView.OnEditorActionListener {
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity implements Callback<TokenJs
 
     @OnClick(R.id.login_button)
     public void onLoginClick() {
-        AuthApi().login(loginEmail.getText().toString(), loginPassword.getText().toString()).enqueue(this);
+        authApi().login(loginEmail.getText().toString(), loginPassword.getText().toString()).enqueue(this);
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging in");
         progressDialog.setIndeterminate(true);

@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.BaseModel;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 
 /**
  * This activity serves as generic implementation of Editing an item.

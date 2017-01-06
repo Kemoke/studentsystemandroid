@@ -18,16 +18,15 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kemoke.ius.studentsystemandroid.R;
-import kemoke.ius.studentsystemandroid.adapters.CrudAdapter;
+import kemoke.ius.studentsystemandroid.adapters.crud.CrudAdapter;
 import kemoke.ius.studentsystemandroid.models.BaseModel;
-import kemoke.ius.studentsystemandroid.util.DeleteCallback;
-import kemoke.ius.studentsystemandroid.util.InitCallback;
+import kemoke.ius.studentsystemandroid.util.callback.DeleteCallback;
+import kemoke.ius.studentsystemandroid.util.callback.InitCallback;
 
 /**
  * This fragment serves as generic implementation for displaying items.
@@ -39,7 +38,7 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
     @BindView(R.id.add_button)
     FloatingActionButton addButton;
     protected ProgressDialog progressDialog;
-    protected final List<T> items;
+    protected final ArrayList<T> items;
     protected final CrudAdapter<? extends RecyclerView.ViewHolder, T> adapter;
     final Class editActivity;
     final Class showActivity;
@@ -61,9 +60,21 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, view);
         initListView();
-        initProgressDialog();
-        loadItems(new InitCallback<>(getContext(), items, listView, progressDialog));
+        if(savedInstanceState != null){
+            ArrayList<T> savedItems = savedInstanceState.getParcelableArrayList("items");
+            items.addAll(savedItems);
+            adapter.getFilter().filter("");
+        } else {
+            initProgressDialog();
+            loadItems(new InitCallback<>(getContext(), items, listView, progressDialog));
+        }
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("items", items);
     }
 
     private void initProgressDialog() {
@@ -96,7 +107,7 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
             case R.id.menu_delete:
                 progressDialog.setMessage("Deleting");
                 progressDialog.show();
-                deleteItem(new DeleteCallback<>(items,
+                deleteItem(new DeleteCallback<T>(
                         listView, progressDialog, getContext(), deletePos),item.id);
                 return true;
         }

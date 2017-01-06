@@ -21,6 +21,6 @@ public class AddDepartmentActivity extends AddActivity<Department>{
     @Override
     protected void addItem(Callback<Department> callback) {
         Department department = new Department(deptName.getText().toString());
-        HttpApi.DepartmentApi().add(department).enqueue(callback);
+        HttpApi.departmentApi().add(department).enqueue(callback);
     }
 }

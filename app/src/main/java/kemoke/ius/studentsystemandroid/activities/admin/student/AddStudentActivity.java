@@ -36,11 +36,11 @@ public class AddStudentActivity extends AddActivity<Student> implements Callback
     EditText cgpa;
     @BindView(R.id.program)
     SearchableSpinner program;
-    List<Program> programs;
+    private List<Program> programs;
 
     public AddStudentActivity() {
         super(R.layout.activity_add_student);
-        HttpApi.ProgramApi().list().enqueue(this);
+        HttpApi.programApi().list().enqueue(this);
     }
 
     @Override
@@ -55,7 +55,7 @@ public class AddStudentActivity extends AddActivity<Student> implements Callback
         student.semester = Integer.valueOf(semester.getText().toString());
         student.cgpa = Double.valueOf(cgpa.getText().toString());
         student.program = programs.get(program.getSelectedItemPosition());
-        HttpApi.StudentApi().add(student).enqueue(callback);
+        HttpApi.studentApi().add(student).enqueue(callback);
     }
 
     @Override

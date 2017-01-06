@@ -12,14 +12,23 @@ public class ThisApplication extends Application {
     private ApplicationPrefs prefs;
     private String token;
     private String userType;
+    private static boolean isInit = false;
 
-    public static ThisApplication getThisApplication(){
+    public static synchronized ThisApplication getThisApplication(){
         return application;
+    }
+
+    public ThisApplication(){
+        super();
+        if(isInit){
+            throw new InternalError("This class is a singleton and should not be instantiated");
+        }
     }
 
     @Override
     public void onCreate() {
         super.onCreate();
+        isInit = true;
         application = this;
         prefs = new ApplicationPrefs(this);
         token = prefs.get("token");

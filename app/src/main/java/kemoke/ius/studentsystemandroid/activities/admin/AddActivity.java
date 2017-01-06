@@ -11,7 +11,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.BaseModel;
-import kemoke.ius.studentsystemandroid.util.AddCallback;
+import kemoke.ius.studentsystemandroid.util.callback.AddCallback;
 import retrofit2.Callback;
 
 /**
@@ -23,7 +23,7 @@ public abstract class AddActivity<T extends BaseModel> extends AppCompatActivity
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     protected ProgressDialog progressDialog;
-    int layout;
+    private int layout;
     protected AddActivity(int layout){
         this.layout = layout;
     }

@@ -28,7 +28,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import kemoke.ius.studentsystemandroid.R;
-import kemoke.ius.studentsystemandroid.adapters.CourseListAdapter;
+import kemoke.ius.studentsystemandroid.adapters.crud.CourseListAdapter;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.fragments.CurriculumAddFragment;
 import kemoke.ius.studentsystemandroid.models.Course;
@@ -38,6 +38,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+@SuppressWarnings("ConstantConditions")
 public class CurriculumActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     @BindView(R.id.toolbar)
@@ -82,7 +83,7 @@ public class CurriculumActivity extends AppCompatActivity implements AdapterView
         listView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         listView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         registerForContextMenu(listView);
-        HttpApi.CourseApi().listWithProps("program").enqueue(courseCallback);
+        HttpApi.courseApi().listWithProps("program").enqueue(courseCallback);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -117,7 +118,6 @@ public class CurriculumActivity extends AppCompatActivity implements AdapterView
     @Override
     public boolean onContextItemSelected(MenuItem menuItem) {
         int deletePos = adapter.getPosition();
-        Course item = displayCourses.get(deletePos);
         switch (menuItem.getItemId()){
             case R.id.menu_delete:
                 adapter.delete(deletePos);
@@ -136,7 +136,7 @@ public class CurriculumActivity extends AppCompatActivity implements AdapterView
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.add_btn) {
-            HttpApi.ProgramApi().setCurriculum(program.id, program.curriculum).enqueue(curriculumCallback);
+            HttpApi.programApi().setCurriculum(program.id, program.curriculum).enqueue(curriculumCallback);
             return true;
         }
         return super.onOptionsItemSelected(item);

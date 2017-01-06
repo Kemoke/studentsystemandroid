@@ -2,10 +2,7 @@ package kemoke.ius.studentsystemandroid.api.crud;
 
 import java.util.List;
 
-import kemoke.ius.studentsystemandroid.models.Course;
-import kemoke.ius.studentsystemandroid.models.Section;
 import kemoke.ius.studentsystemandroid.models.Student;
-import kemoke.ius.studentsystemandroid.models.StudentGrade;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -47,19 +44,4 @@ public interface StudentApi{
 
     @DELETE("/student/{id}")
     Call<String> delete(@Path("id") int id);
-
-    @POST("/student/register")
-    Call<Section> register(@Body Section section);
-
-    @POST("/student/unregister")
-    Call<Section> unregister(@Body Section section);
-
-    @GET("/student/courses")
-    Call<List<Course>> courses();
-
-    @GET("/student/sections")
-    Call<List<Section>> sections();
-
-    @GET("/student/grades")
-    Call<StudentGrade> grades();
 }

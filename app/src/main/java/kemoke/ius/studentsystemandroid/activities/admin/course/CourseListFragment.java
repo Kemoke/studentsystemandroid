@@ -1,11 +1,11 @@
 package kemoke.ius.studentsystemandroid.activities.admin.course;
 
 import kemoke.ius.studentsystemandroid.activities.admin.ListFragment;
-import kemoke.ius.studentsystemandroid.adapters.CourseListAdapter;
+import kemoke.ius.studentsystemandroid.adapters.crud.CourseListAdapter;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Course;
-import kemoke.ius.studentsystemandroid.util.DeleteCallback;
-import kemoke.ius.studentsystemandroid.util.InitCallback;
+import kemoke.ius.studentsystemandroid.util.callback.DeleteCallback;
+import kemoke.ius.studentsystemandroid.util.callback.InitCallback;
 
 public class CourseListFragment extends ListFragment<Course> {
 
@@ -15,11 +15,11 @@ public class CourseListFragment extends ListFragment<Course> {
     }
     @Override
     protected void loadItems(InitCallback<Course> callback) {
-        HttpApi.CourseApi().listWithProps("program").enqueue(callback);
+        HttpApi.courseApi().listWithProps("program").enqueue(callback);
     }
 
     @Override
     protected void deleteItem(DeleteCallback<Course> callback, int itemId) {
-        HttpApi.CourseApi().delete(itemId).enqueue(callback);
+        HttpApi.courseApi().delete(itemId).enqueue(callback);
     }
 }

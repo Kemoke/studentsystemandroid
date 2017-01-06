@@ -7,7 +7,7 @@ import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.activities.admin.EditActivity;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Department;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 
 public class EditDepartmentActivity extends EditActivity<Department> {
 
@@ -26,6 +26,6 @@ public class EditDepartmentActivity extends EditActivity<Department> {
     @Override
     protected void editItem(EditCallback<Department> callback, Department item) {
         item.name = deptName.getText().toString();
-        HttpApi.DepartmentApi().edit(item.id, item).enqueue(callback);
+        HttpApi.departmentApi().edit(item.id, item).enqueue(callback);
     }
 }

@@ -28,6 +28,7 @@ public class HttpApi {
     private static InstructorApi instructorApi;
     private static StudentApi studentApi;
     private static NewsApi newsApi;
+    private static StudentActionsApi studentActionsApi;
     private static boolean isInit = false;
 
     public static void init(Context context){
@@ -43,36 +44,40 @@ public class HttpApi {
         isInit = true;
     }
 
-    public static AuthApi AuthApi(){
+    public static AuthApi authApi(){
         return getOrCreate(authApi, AuthApi.class);
     }
 
-    public static DepartmentApi DepartmentApi(){
+    public static DepartmentApi departmentApi(){
         return getOrCreate(departmentApi, DepartmentApi.class);
     }
 
-    public static ProgramApi ProgramApi() {
+    public static ProgramApi programApi() {
         return getOrCreate(programApi, ProgramApi.class);
     }
 
-    public static CourseApi CourseApi() {
+    public static CourseApi courseApi() {
         return getOrCreate(courseApi, CourseApi.class);
     }
 
-    public static SectionApi SectionApi() {
+    public static SectionApi sectionApi() {
         return getOrCreate(sectionApi, SectionApi.class);
     }
 
-    public static InstructorApi InstructorApi() {
+    public static InstructorApi instructorApi() {
         return getOrCreate(instructorApi, InstructorApi.class);
     }
 
-    public static StudentApi StudentApi() {
+    public static StudentApi studentApi() {
         return getOrCreate(studentApi, StudentApi.class);
     }
 
-    public static NewsApi NewsApi(){
+    public static NewsApi newsApi(){
         return getOrCreate(newsApi, NewsApi.class);
+    }
+
+    public static StudentActionsApi studentActionsApi() {
+        return getOrCreate(studentActionsApi, StudentActionsApi.class);
     }
 
     private static <T> T getOrCreate(T service, Class<T> clazz){

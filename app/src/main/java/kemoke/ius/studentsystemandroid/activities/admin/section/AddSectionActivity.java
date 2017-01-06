@@ -28,8 +28,8 @@ public class AddSectionActivity extends AddActivity<Section> {
     SearchableSpinner course;
     @BindView(R.id.instructor)
     SearchableSpinner instructor;
-    List<Course> courses;
-    List<Instructor> instructors;
+    private List<Course> courses;
+    private List<Instructor> instructors;
 
     public AddSectionActivity() {
         super(R.layout.activity_add_section);
@@ -38,8 +38,8 @@ public class AddSectionActivity extends AddActivity<Section> {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.CourseApi().list().enqueue(courseCallback);
-        HttpApi.InstructorApi().list().enqueue(instructorCallback);
+        HttpApi.courseApi().list().enqueue(courseCallback);
+        HttpApi.instructorApi().list().enqueue(instructorCallback);
         course.setTitle("Select Section");
         course.setPositiveButton("Close");
         instructor.setTitle("Select Section");
@@ -53,10 +53,10 @@ public class AddSectionActivity extends AddActivity<Section> {
         section.capacity = Integer.parseInt(capacity.getText().toString());
         section.course = courses.get(course.getSelectedItemPosition());
         section.instructor = instructors.get(instructor.getSelectedItemPosition());
-        HttpApi.SectionApi().add(section).enqueue(callback);
+        HttpApi.sectionApi().add(section).enqueue(callback);
     }
 
-    Callback<List<Course>> courseCallback = new Callback<List<Course>>() {
+    private Callback<List<Course>> courseCallback = new Callback<List<Course>>() {
         @Override
         public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
             courses = response.body();
@@ -76,7 +76,7 @@ public class AddSectionActivity extends AddActivity<Section> {
         }
     };
 
-    Callback<List<Instructor>> instructorCallback = new Callback<List<Instructor>>() {
+    private Callback<List<Instructor>> instructorCallback = new Callback<List<Instructor>>() {
         @Override
         public void onResponse(Call<List<Instructor>> call, Response<List<Instructor>> response) {
             instructors = response.body();

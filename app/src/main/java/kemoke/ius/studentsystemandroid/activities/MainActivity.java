@@ -11,10 +11,14 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,6 +31,7 @@ import kemoke.ius.studentsystemandroid.activities.admin.program.ProgramListFragm
 import kemoke.ius.studentsystemandroid.activities.admin.section.SectionListFragment;
 import kemoke.ius.studentsystemandroid.activities.admin.student.StudentListFragment;
 import kemoke.ius.studentsystemandroid.activities.news.NewsFragment;
+import kemoke.ius.studentsystemandroid.activities.student.GradeFragment;
 import kemoke.ius.studentsystemandroid.activities.student.RegisterFragment;
 import kemoke.ius.studentsystemandroid.activities.student.TimetableFragment;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
@@ -42,6 +47,7 @@ import static kemoke.ius.studentsystemandroid.util.ThisApplication.getThisApplic
  * It contains the navigation drawer and toolbar.
  * Depending on which nav item is selected the corresponding Fragment is injected into ContentView.
  */
+@SuppressWarnings("SameReturnValue")
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, Callback<User> {
 
@@ -65,7 +71,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         initNavDrawer();
         loadUserInfo();
-        loadNews(savedInstanceState);
+        loadViewFragment(savedInstanceState);
     }
 
     private void initNavDrawer() {
@@ -75,32 +81,35 @@ public class MainActivity extends AppCompatActivity
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
-        if (getThisApplication().getUserType().contains("Admin")) {
-            navView.inflateMenu(R.menu.drawer_admin_menu);
-        } else if (getThisApplication().getUserType().contains("Student")) {
-            navView.inflateMenu(R.menu.drawer_student_menu);
+        switch (getThisApplication().getUserType()) {
+            case "Admin":
+                navView.inflateMenu(R.menu.drawer_admin_menu);
+                break;
+            case "Student":
+                navView.inflateMenu(R.menu.drawer_student_menu);
+                break;
         }
         toggle.syncState();
         navView.setNavigationItemSelectedListener(this);
     }
 
-    private void loadNews(Bundle savedInstanceState) {
+    private void loadViewFragment(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
             selectedItem = savedInstanceState.getInt("selectedItem", -1);
+            currentFragment = getSupportFragmentManager().getFragment(savedInstanceState, "fragment");
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_view, currentFragment, "main")
+                    .commit();
+            navView.setCheckedItem(selectedItem);
         } else {
-            selectedItem = -1;
-        }
-        if (selectedItem == -1) {
             onNavigationItemSelected(R.id.nav_news);
-        } else {
-            onNavigationItemSelected(selectedItem);
         }
     }
 
     private void loadUserInfo() {
         user = getThisApplication().getUser();
         if (user == null) {
-            HttpApi.AuthApi().self().enqueue(this);
+            HttpApi.authApi().self().enqueue(this);
         } else {
             nameView.setText(user.firstName + " " + user.lastName);
             emailView.setText(user.email);
@@ -119,10 +128,9 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
-        if (currentFragment != null && currentFragment.getClass() != NewsFragment.class) {
+        if (getThisApplication().getUserType().equals("Admin") && currentFragment != null && currentFragment.getClass() != NewsFragment.class) {
             searchView.setOnQueryTextListener((ListFragment) currentFragment);
             searchView.setVisibility(View.VISIBLE);
         } else {
@@ -171,6 +179,10 @@ public class MainActivity extends AppCompatActivity
                 currentFragment = new RegisterFragment();
                 setTitle("Registration");
                 break;
+            case R.id.nav_grades:
+                currentFragment = new GradeFragment();
+                setTitle("Grades");
+                break;
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_view, currentFragment, "main")
@@ -211,7 +223,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
         return onNavigationItemSelected(item.getItemId());
     }
 
@@ -222,18 +233,26 @@ public class MainActivity extends AppCompatActivity
             getThisApplication().setUser(user);
             nameView.setText(user.firstName + " " + user.lastName);
             emailView.setText(user.email);
+        } else {
+            try {
+                Log.e("srv err", response.errorBody().string());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Toast.makeText(this, "Failed to load user info", Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
     public void onFailure(Call<User> call, Throwable t) {
-
+        Log.e("net err", t.getMessage());
+        Toast.makeText(this, "Failed to load user info", Toast.LENGTH_SHORT).show();
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
+        getSupportFragmentManager().putFragment(outState,"fragment", currentFragment);
         outState.putInt("selectedItem", selectedItem);
     }
 }

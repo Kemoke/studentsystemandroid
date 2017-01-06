@@ -8,17 +8,6 @@ import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Section extends BaseModel {
-    public static final Creator<Section> CREATOR = new Creator<Section>() {
-        @Override
-        public Section createFromParcel(Parcel source) {
-            return new Section(source);
-        }
-
-        @Override
-        public Section[] newArray(int size) {
-            return new Section[size];
-        }
-    };
     public int number;
     public int capacity;
     public Course course;
@@ -65,4 +54,16 @@ public class Section extends BaseModel {
         dest.writeTypedList(this.students);
         dest.writeTypedList(this.timeTable);
     }
+
+    public static final Creator<Section> CREATOR = new Creator<Section>() {
+        @Override
+        public Section createFromParcel(Parcel source) {
+            return new Section(source);
+        }
+
+        @Override
+        public Section[] newArray(int size) {
+            return new Section[size];
+        }
+    };
 }

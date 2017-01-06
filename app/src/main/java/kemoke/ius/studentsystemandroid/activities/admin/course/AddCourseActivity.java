@@ -27,7 +27,7 @@ public class AddCourseActivity extends AddActivity<Course> implements Callback<L
     EditText ects;
     @BindView(R.id.program)
     SearchableSpinner program;
-    List<Program> programs;
+    private List<Program> programs;
 
     public AddCourseActivity() {
         super(R.layout.activity_add_course);
@@ -40,13 +40,13 @@ public class AddCourseActivity extends AddActivity<Course> implements Callback<L
         course.code = code.getText().toString();
         course.ects = Integer.valueOf(ects.getText().toString());
         course.program = programs.get(program.getSelectedItemPosition());
-        HttpApi.CourseApi().add(course).enqueue(callback);
+        HttpApi.courseApi().add(course).enqueue(callback);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.ProgramApi().list().enqueue(this);
+        HttpApi.programApi().list().enqueue(this);
     }
 
     @Override

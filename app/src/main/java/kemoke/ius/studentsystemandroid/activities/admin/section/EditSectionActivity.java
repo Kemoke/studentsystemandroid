@@ -15,7 +15,7 @@ import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Course;
 import kemoke.ius.studentsystemandroid.models.Instructor;
 import kemoke.ius.studentsystemandroid.models.Section;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -39,8 +39,8 @@ public class EditSectionActivity extends EditActivity<Section>{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.CourseApi().list().enqueue(courseCallback);
-        HttpApi.InstructorApi().list().enqueue(instructorCallback);
+        HttpApi.courseApi().list().enqueue(courseCallback);
+        HttpApi.instructorApi().list().enqueue(instructorCallback);
         course.setTitle("Select Section");
         course.setPositiveButton("Close");
         instructor.setTitle("Select Section");
@@ -59,7 +59,7 @@ public class EditSectionActivity extends EditActivity<Section>{
         item.capacity = Integer.parseInt(capacity.getText().toString());
         item.course = courses.get(course.getSelectedItemPosition());
         item.instructor = instructors.get(instructor.getSelectedItemPosition());
-        HttpApi.SectionApi().edit(item.id, item).enqueue(callback);
+        HttpApi.sectionApi().edit(item.id, item).enqueue(callback);
     }
 
     Callback<List<Course>> courseCallback = new Callback<List<Course>>() {

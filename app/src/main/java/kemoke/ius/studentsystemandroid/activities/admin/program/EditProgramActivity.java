@@ -14,7 +14,7 @@ import kemoke.ius.studentsystemandroid.activities.admin.EditActivity;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Department;
 import kemoke.ius.studentsystemandroid.models.Program;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -34,7 +34,7 @@ public class EditProgramActivity extends EditActivity<Program> implements Callba
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.DepartmentApi().list().enqueue(this);
+        HttpApi.departmentApi().list().enqueue(this);
         progressDialog.show();
     }
 
@@ -47,7 +47,7 @@ public class EditProgramActivity extends EditActivity<Program> implements Callba
     protected void editItem(EditCallback<Program> callback, Program item) {
         item.name = name.getText().toString();
         item.department = departments.get(deptSpinner.getSelectedItemPosition());
-        HttpApi.ProgramApi().edit(item.id, item).enqueue(callback);
+        HttpApi.programApi().edit(item.id, item).enqueue(callback);
     }
 
     @Override

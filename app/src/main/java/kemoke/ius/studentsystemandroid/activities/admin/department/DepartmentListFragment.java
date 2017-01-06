@@ -1,11 +1,11 @@
 package kemoke.ius.studentsystemandroid.activities.admin.department;
 
 import kemoke.ius.studentsystemandroid.activities.admin.ListFragment;
-import kemoke.ius.studentsystemandroid.adapters.DepartmentListAdapter;
+import kemoke.ius.studentsystemandroid.adapters.crud.DepartmentListAdapter;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Department;
-import kemoke.ius.studentsystemandroid.util.DeleteCallback;
-import kemoke.ius.studentsystemandroid.util.InitCallback;
+import kemoke.ius.studentsystemandroid.util.callback.DeleteCallback;
+import kemoke.ius.studentsystemandroid.util.callback.InitCallback;
 
 public class DepartmentListFragment extends ListFragment<Department> {
 
@@ -16,12 +16,12 @@ public class DepartmentListFragment extends ListFragment<Department> {
 
     @Override
     public void loadItems(InitCallback<Department> callback) {
-        HttpApi.DepartmentApi().list().enqueue(callback);
+        HttpApi.departmentApi().list().enqueue(callback);
     }
 
     @Override
     public void deleteItem(DeleteCallback<Department> callback, int itemId) {
-        HttpApi.DepartmentApi().delete(itemId).enqueue(callback);
+        HttpApi.departmentApi().delete(itemId).enqueue(callback);
     }
 }
 
@@ -51,7 +51,7 @@ public class DepartmentListFragment extends ListFragment<Department> {
         registerForContextMenu(departmentList);
         departmentList.setClickable(true);
         ((DepartmentListAdapter)departmentList.getAdapter()).setOnItemClickListener(this);
-        DepartmentApi().list().enqueue(new InitCallback<>(getContext(), departments, departmentList, progressDialog));
+        departmentApi().list().enqueue(new InitCallback<>(getContext(), departments, departmentList, progressDialog));
         return view;
     }
 
@@ -69,7 +69,7 @@ public class DepartmentListFragment extends ListFragment<Department> {
             case R.id.menu_delete:
                 progressDialog.setMessage("Deleting");
                 progressDialog.show();
-                DepartmentApi().delete(department.id).enqueue(new DeleteCallback<>(departments,
+                departmentApi().delete(department.id).enqueue(new DeleteCallback<>(departments,
                         departmentList, progressDialog, getContext(), deletePos));
                 return true;
             case R.id.menu_programs:

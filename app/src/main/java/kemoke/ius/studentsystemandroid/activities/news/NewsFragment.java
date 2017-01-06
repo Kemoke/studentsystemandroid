@@ -43,7 +43,7 @@ public class NewsFragment extends Fragment implements Callback<List<Article>> {
         newsList.setLayoutManager(new StaggeredGridLayoutManager(cols, StaggeredGridLayoutManager.VERTICAL));
         news = getThisApplication().getPreferences().getList(Article.class, "news");
         newsList.setAdapter(new NewsListAdapter(getContext(), news));
-        HttpApi.NewsApi().getNews().enqueue(this);
+        HttpApi.newsApi().getNews().enqueue(this);
         return view;
     }
 

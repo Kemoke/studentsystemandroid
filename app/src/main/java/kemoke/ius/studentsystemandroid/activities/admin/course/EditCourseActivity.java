@@ -14,7 +14,7 @@ import kemoke.ius.studentsystemandroid.activities.admin.EditActivity;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Course;
 import kemoke.ius.studentsystemandroid.models.Program;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,7 +37,7 @@ public class EditCourseActivity extends EditActivity<Course> implements Callback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.ProgramApi().list().enqueue(this);
+        HttpApi.programApi().list().enqueue(this);
     }
 
     @Override

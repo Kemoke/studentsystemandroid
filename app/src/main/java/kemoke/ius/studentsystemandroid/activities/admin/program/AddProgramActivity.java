@@ -23,8 +23,7 @@ public class AddProgramActivity extends AddActivity<Program> implements Callback
     EditText name;
     @BindView(R.id.department)
     SearchableSpinner deptSpinner;
-    List<Department> departments;
-    Department selectedDepartment;
+    private List<Department> departments;
 
     protected AddProgramActivity() {
         super(R.layout.activity_add_program);
@@ -33,14 +32,14 @@ public class AddProgramActivity extends AddActivity<Program> implements Callback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.DepartmentApi().list().enqueue(this);
+        HttpApi.departmentApi().list().enqueue(this);
         progressDialog.show();
     }
 
     @Override
     protected void addItem(Callback<Program> callback) {
         Program program = new Program(name.getText().toString(), departments.get(deptSpinner.getSelectedItemPosition()));
-        HttpApi.ProgramApi().add(program).enqueue(callback);
+        HttpApi.programApi().add(program).enqueue(callback);
     }
 
     @Override

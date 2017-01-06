@@ -31,7 +31,7 @@ public class AddInstructorActivity extends AddActivity<Instructor> implements Ca
     EditText instructorId;
     @BindView(R.id.department)
     SearchableSpinner department;
-    List<Department> departments;
+    private List<Department> departments;
 
     public AddInstructorActivity() {
         super(R.layout.activity_add_instructor);
@@ -40,7 +40,7 @@ public class AddInstructorActivity extends AddActivity<Instructor> implements Ca
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.DepartmentApi().list().enqueue(this);
+        HttpApi.departmentApi().list().enqueue(this);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class AddInstructorActivity extends AddActivity<Instructor> implements Ca
         instructor.lastName = lastName.getText().toString();
         instructor.instructorId = instructorId.getText().toString();
         instructor.department = departments.get(department.getSelectedItemPosition());
-        HttpApi.InstructorApi().add(instructor).enqueue(callback);
+        HttpApi.instructorApi().add(instructor).enqueue(callback);
     }
 
     @Override

@@ -5,11 +5,11 @@ import android.view.MenuItem;
 
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.activities.admin.ListFragment;
-import kemoke.ius.studentsystemandroid.adapters.ProgramListAdapter;
+import kemoke.ius.studentsystemandroid.adapters.crud.ProgramListAdapter;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Program;
-import kemoke.ius.studentsystemandroid.util.DeleteCallback;
-import kemoke.ius.studentsystemandroid.util.InitCallback;
+import kemoke.ius.studentsystemandroid.util.callback.DeleteCallback;
+import kemoke.ius.studentsystemandroid.util.callback.InitCallback;
 
 public class ProgramListFragment extends ListFragment<Program> {
     public ProgramListFragment(){
@@ -19,12 +19,12 @@ public class ProgramListFragment extends ListFragment<Program> {
 
     @Override
     public void loadItems(InitCallback<Program> callback) {
-        HttpApi.ProgramApi().listWithProps("department,curriculum.course").enqueue(callback);
+        HttpApi.programApi().listWithProps("department,curriculum.course").enqueue(callback);
     }
 
     @Override
     public void deleteItem(DeleteCallback<Program> callback, int itemId) {
-        HttpApi.ProgramApi().delete(itemId).enqueue(callback);
+        HttpApi.programApi().delete(itemId).enqueue(callback);
     }
 
     @Override

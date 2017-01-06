@@ -15,7 +15,7 @@ import kemoke.ius.studentsystemandroid.activities.admin.EditActivity;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.Department;
 import kemoke.ius.studentsystemandroid.models.Instructor;
-import kemoke.ius.studentsystemandroid.util.EditCallback;
+import kemoke.ius.studentsystemandroid.util.callback.EditCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -42,7 +42,7 @@ public class EditInstructorActivity extends EditActivity<Instructor> implements 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        HttpApi.DepartmentApi().list().enqueue(this);
+        HttpApi.departmentApi().list().enqueue(this);
         password.setVisibility(View.GONE);
     }
 
@@ -61,7 +61,7 @@ public class EditInstructorActivity extends EditActivity<Instructor> implements 
         item.lastName = lastName.getText().toString();
         item.instructorId = instructorId.getText().toString();
         item.department = departments.get(department.getSelectedItemPosition());
-        HttpApi.InstructorApi().edit(item.id, item).enqueue(callback);
+        HttpApi.instructorApi().edit(item.id, item).enqueue(callback);
     }
 
     @Override
