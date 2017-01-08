@@ -24,6 +24,7 @@ public abstract class AddActivity<T extends BaseModel> extends AppCompatActivity
     Toolbar toolbar;
     protected ProgressDialog progressDialog;
     private int layout;
+
     protected AddActivity(int layout){
         this.layout = layout;
     }
@@ -51,15 +52,11 @@ public abstract class AddActivity<T extends BaseModel> extends AppCompatActivity
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if(id == R.id.add_btn){
-            onAdd();
+            addItem(new AddCallback<T>(this, progressDialog));
+            progressDialog.show();
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void onAdd() {
-        addItem(new AddCallback<T>(this, progressDialog));
-        progressDialog.show();
     }
 
     protected abstract void addItem(Callback<T> callback);

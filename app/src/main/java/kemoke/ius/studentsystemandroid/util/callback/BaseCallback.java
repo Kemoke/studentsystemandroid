@@ -45,7 +45,7 @@ public abstract class BaseCallback<T> implements Callback<T> {
             }
         }
         if(progressDialog != null)
-            progressDialog.hide();
+            progressDialog.dismiss();
     }
 
     public abstract void onSuccess(T body);
@@ -55,7 +55,7 @@ public abstract class BaseCallback<T> implements Callback<T> {
         Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
         Log.e("net err", t.getMessage());
         if(progressDialog != null)
-            progressDialog.hide();
+            progressDialog.dismiss();
     }
 
 

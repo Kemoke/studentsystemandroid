@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#bdbdbd"
+    android:background="?android:listDivider"
     android:orientation="horizontal"
-    android:paddingTop="1dp">
+    android:paddingTop="1dp"
+    tools:ignore="RtlHardcoded, RtlSymmetry, HardcodedText" >
 
     <TextView
         android:id="@+id/hourLabel"
@@ -25,6 +26,7 @@
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:gravity="center"
         android:minHeight="70dp"
         android:text="CS203"
@@ -37,6 +39,7 @@
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:gravity="center"
         android:minHeight="70dp"
         android:text="CS203"
@@ -49,6 +52,7 @@
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:gravity="center"
         android:minHeight="70dp"
         android:text="CS203"
@@ -61,6 +65,7 @@
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:gravity="center"
         android:minHeight="70dp"
         android:text="CS203"
@@ -73,8 +78,9 @@
         android:layout_marginLeft="1dp"
         android:layout_weight="1"
         android:background="@color/white"
+        android:layout_gravity="center"
         android:gravity="center"
         android:minHeight="70dp"
         android:text="CS203"
-        android:textSize="12sp"/>
+        android:textSize="12sp" />
 </LinearLayout>

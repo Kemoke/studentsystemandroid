@@ -1,4 +1,4 @@
-package kemoke.ius.studentsystemandroid.adapters.crud;
+package kemoke.ius.studentsystemandroid.adapters.instructor;
 
 import android.support.v7.view.SupportMenuInflater;
 import android.support.v7.widget.RecyclerView;
@@ -14,10 +14,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import kemoke.ius.studentsystemandroid.R;
+import kemoke.ius.studentsystemandroid.adapters.crud.CrudAdapter;
 import kemoke.ius.studentsystemandroid.models.Section;
 import kemoke.ius.studentsystemandroid.util.ThisApplication;
 
-public class SectionListAdapter extends CrudAdapter<SectionListAdapter.ViewHolder, Section> {
+public class InstructorSectionListAdapter extends CrudAdapter<InstructorSectionListAdapter.ViewHolder, Section> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,12 +37,6 @@ public class SectionListAdapter extends CrudAdapter<SectionListAdapter.ViewHolde
             public boolean onLongClick(View view) {
                 setPosition(holder.getAdapterPosition());
                 return false;
-            }
-        });
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onItemClickListener.onItemClick(null, view, holder.getAdapterPosition(), 0);
             }
         });
     }
@@ -67,7 +62,7 @@ public class SectionListAdapter extends CrudAdapter<SectionListAdapter.ViewHolde
 
         @Override
         public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            new SupportMenuInflater(ThisApplication.getThisApplication()).inflate(R.menu.section_context_menu, contextMenu);
+            new SupportMenuInflater(ThisApplication.getThisApplication()).inflate(R.menu.instructor_section_context_menu, contextMenu);
         }
     }
 
@@ -94,10 +89,10 @@ public class SectionListAdapter extends CrudAdapter<SectionListAdapter.ViewHolde
 
         @Override
         protected void publishResults(CharSequence input, FilterResults results) {
-            SectionListAdapter.this.displayItems.clear();
+            InstructorSectionListAdapter.this.displayItems.clear();
             //noinspection unchecked
-            SectionListAdapter.this.displayItems.addAll((List<Section>) results.values);
-            SectionListAdapter.this.notifyDataSetChanged();
+            InstructorSectionListAdapter.this.displayItems.addAll((List<Section>) results.values);
+            InstructorSectionListAdapter.this.notifyDataSetChanged();
         }
     }
 }

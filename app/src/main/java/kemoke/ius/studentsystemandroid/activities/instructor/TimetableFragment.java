@@ -1,4 +1,4 @@
-package kemoke.ius.studentsystemandroid.activities.student;
+package kemoke.ius.studentsystemandroid.activities.instructor;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -46,7 +46,6 @@ public class TimetableFragment extends Fragment {
         };
     }
 
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -58,7 +57,7 @@ public class TimetableFragment extends Fragment {
             timetable.setAdapter(new TimeTableAdapter(sections));
         } else {
             progressDialog.show();
-            HttpApi.studentActionsApi().registeredSections().enqueue(sectionsCallback);
+            HttpApi.instructorActionsApi().sections().enqueue(sectionsCallback);
         }
         return view;
     }

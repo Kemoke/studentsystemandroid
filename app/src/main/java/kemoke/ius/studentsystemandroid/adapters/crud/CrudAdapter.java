@@ -21,7 +21,7 @@ public abstract class CrudAdapter<VH extends RecyclerView.ViewHolder, T extends 
         this.items = items;
     }
 
-    List<T> items;
+    protected List<T> items;
 
     public void delete(int position) {
         T item = displayItems.remove(position);
@@ -42,13 +42,13 @@ public abstract class CrudAdapter<VH extends RecyclerView.ViewHolder, T extends 
         notifyItemChanged(index);
     }
 
-    List<T> displayItems;
+    protected List<T> displayItems;
 
     public int getPosition() {
         return position;
     }
 
-    AdapterView.OnItemClickListener onItemClickListener;
+    protected AdapterView.OnItemClickListener onItemClickListener;
 
     public CrudAdapter() {
         displayItems = new ArrayList<>();
@@ -71,7 +71,7 @@ public abstract class CrudAdapter<VH extends RecyclerView.ViewHolder, T extends 
         this.position = position;
     }
 
-    String getAbbr(String input) {
+    protected String getAbbr(String input) {
         String abbr = "";
         for (int i = 0; i < input.length(); i++) {
             if (Character.isUpperCase(input.charAt(i))) {

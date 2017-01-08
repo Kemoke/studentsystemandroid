@@ -29,6 +29,7 @@ public class HttpApi {
     private static StudentApi studentApi;
     private static NewsApi newsApi;
     private static StudentActionsApi studentActionsApi;
+    private static InstructorActionsApi instructorActionsApi;
     private static boolean isInit = false;
 
     public static void init(Context context){
@@ -78,6 +79,10 @@ public class HttpApi {
 
     public static StudentActionsApi studentActionsApi() {
         return getOrCreate(studentActionsApi, StudentActionsApi.class);
+    }
+
+    public static InstructorActionsApi instructorActionsApi(){
+        return getOrCreate(instructorActionsApi, InstructorActionsApi.class);
     }
 
     private static <T> T getOrCreate(T service, Class<T> clazz){

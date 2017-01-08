@@ -60,6 +60,7 @@ public abstract class ListFragment<T extends BaseModel> extends Fragment impleme
         View view = inflater.inflate(R.layout.fragment_list, container, false);
         ButterKnife.bind(this, view);
         initListView();
+        //used for screen rotation so we dont load items again from internet
         if(savedInstanceState != null){
             ArrayList<T> savedItems = savedInstanceState.getParcelableArrayList("items");
             items.addAll(savedItems);

@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="kemoke.ius.studentsystemandroid">
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -18,7 +17,6 @@
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -30,7 +28,17 @@
             android:name=".activities.MainActivity"
             android:label="@string/title_activity_main"
             android:launchMode="singleTop"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="sis.kemoke.net"
+                    android:pathPrefix="/"
+                    android:scheme="https" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".activities.admin.department.AddDepartmentActivity"
             android:label="Add Department"
@@ -128,11 +136,14 @@
             android:name=".activities.admin.program.CurriculumActivity"
             android:label="@string/title_activity_curriculum"
             android:parentActivityName=".activities.MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="kemoke.ius.studentsystemandroid.activities.MainActivity" />
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.instructor.GradeTypeActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.instructor.StudentListActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
-
 </manifest>

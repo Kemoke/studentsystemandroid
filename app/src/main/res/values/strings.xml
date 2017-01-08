@@ -145,4 +145,9 @@
     <string name="course_registration">Course Registration</string>
     <string name="grades">Grades</string>
     <string name="registered_sections">Registered Sections</string>
+    <string name="grade_types">Grade Types</string>
+    <string name="value">Value:</string>
+    <string name="weight">Weight:</string>
+    <string name="grade_type">Grade Type</string>
+    <string name="grade_weight">Grade Weight</string>
 </resources>

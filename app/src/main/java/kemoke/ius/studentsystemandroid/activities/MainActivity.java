@@ -30,10 +30,10 @@ import kemoke.ius.studentsystemandroid.activities.admin.instructor.InstructorLis
 import kemoke.ius.studentsystemandroid.activities.admin.program.ProgramListFragment;
 import kemoke.ius.studentsystemandroid.activities.admin.section.SectionListFragment;
 import kemoke.ius.studentsystemandroid.activities.admin.student.StudentListFragment;
+import kemoke.ius.studentsystemandroid.activities.instructor.SectionFragment;
 import kemoke.ius.studentsystemandroid.activities.news.NewsFragment;
 import kemoke.ius.studentsystemandroid.activities.student.GradeFragment;
 import kemoke.ius.studentsystemandroid.activities.student.RegisterFragment;
-import kemoke.ius.studentsystemandroid.activities.student.TimetableFragment;
 import kemoke.ius.studentsystemandroid.api.HttpApi;
 import kemoke.ius.studentsystemandroid.models.User;
 import retrofit2.Call;
@@ -88,6 +88,8 @@ public class MainActivity extends AppCompatActivity
             case "Student":
                 navView.inflateMenu(R.menu.drawer_student_menu);
                 break;
+            case "Instructor":
+                navView.inflateMenu(R.menu.drawer_instructor_menu);
         }
         toggle.syncState();
         navView.setNavigationItemSelectedListener(this);
@@ -172,7 +174,10 @@ public class MainActivity extends AppCompatActivity
                 setTitle("sections");
                 break;
             case R.id.nav_timetable:
-                currentFragment = new TimetableFragment();
+                if(getThisApplication().getUserType().equals("Instructor"))
+                    currentFragment = new kemoke.ius.studentsystemandroid.activities.instructor.TimetableFragment();
+                else
+                    currentFragment = new kemoke.ius.studentsystemandroid.activities.student.TimetableFragment();
                 setTitle("Timetable");
                 break;
             case R.id.nav_registration:
@@ -183,13 +188,18 @@ public class MainActivity extends AppCompatActivity
                 currentFragment = new GradeFragment();
                 setTitle("Grades");
                 break;
+            case R.id.nav_instructor_sections:
+                currentFragment = new SectionFragment();
+                setTitle("Sections");
+                break;
         }
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_view, currentFragment, "main")
                 .commit();
-        if (getThisApplication().getUserType().equals("Admin") && currentFragment.getClass() != NewsFragment.class) {
+        if (getThisApplication().getUserType().equals("Admin") && currentFragment.getClass() != NewsFragment.class
+                || currentFragment.getClass() == SectionFragment.class) {
             if (searchView != null) {
-                searchView.setOnQueryTextListener((ListFragment) currentFragment);
+                searchView.setOnQueryTextListener((SearchView.OnQueryTextListener) currentFragment);
                 searchView.setVisibility(View.VISIBLE);
             }
         } else {
@@ -202,9 +212,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         switch (id) {
             case R.id.action_settings:

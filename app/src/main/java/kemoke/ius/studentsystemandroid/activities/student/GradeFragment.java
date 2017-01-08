@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -28,6 +29,7 @@ public class GradeFragment extends Fragment {
     RecyclerView listView;
     private BaseCallback<List<StudentGrade>> gradeCallback;
     private ProgressDialog progressDialog;
+    private ArrayList<StudentGrade> studentGrades;
 
     @Override
     public void onAttach(Context context) {
@@ -39,7 +41,8 @@ public class GradeFragment extends Fragment {
         gradeCallback = new BaseCallback<List<StudentGrade>>(context, "Failed to load grades", progressDialog) {
             @Override
             public void onSuccess(List<StudentGrade> body) {
-                listView.setAdapter(new GradeAdapter(context, body));
+                studentGrades = new ArrayList<>(body);
+                listView.setAdapter(new GradeAdapter(context, studentGrades));
             }
         };
     }
@@ -47,12 +50,23 @@ public class GradeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_student_grades, container, false);
+        View view = inflater.inflate(R.layout.fragment_listview, container, false);
         ButterKnife.bind(this, view);
         listView.setLayoutManager(new LinearLayoutManager(getContext()));
         listView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        HttpApi.studentActionsApi().grades().enqueue(gradeCallback);
-        progressDialog.show();
+        if(savedInstanceState != null){
+            studentGrades = savedInstanceState.getParcelableArrayList("studentGrades");
+            listView.setAdapter(new GradeAdapter(getContext(), studentGrades));
+        } else {
+            progressDialog.show();
+            HttpApi.studentActionsApi().grades().enqueue(gradeCallback);
+        }
         return view;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("studentGrades", studentGrades);
     }
 }
