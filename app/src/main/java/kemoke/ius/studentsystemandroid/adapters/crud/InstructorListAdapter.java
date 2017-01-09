@@ -51,7 +51,7 @@ public class InstructorListAdapter extends CrudAdapter<InstructorListAdapter.Vie
         return new Filter();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         @BindView(R.id.name)
         TextView name;
         @BindView(R.id.instructorId)

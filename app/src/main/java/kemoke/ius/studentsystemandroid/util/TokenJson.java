@@ -1,9 +1,12 @@
 package kemoke.ius.studentsystemandroid.util;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class TokenJson {
+    @JsonField
     public String jwt;
+    @JsonField
     public String type;
 }

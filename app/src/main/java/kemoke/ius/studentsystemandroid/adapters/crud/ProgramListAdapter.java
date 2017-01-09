@@ -50,7 +50,7 @@ public class ProgramListAdapter extends CrudAdapter<ProgramListAdapter.ViewHolde
         return new Filter();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         @BindView(R.id.name)
         TextView nameText;
         @BindView(R.id.deptName)

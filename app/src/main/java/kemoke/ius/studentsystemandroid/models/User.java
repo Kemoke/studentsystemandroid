@@ -2,13 +2,18 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class User extends BaseModel {
+    @JsonField
     public String email;
+    @JsonField
     public String password;
+    @JsonField
     public String firstName;
+    @JsonField
     public String lastName;
 
     public User(String email, String password, String firstName, String lastName) {

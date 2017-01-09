@@ -2,11 +2,13 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonIgnore;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class Instructor extends User {
     public static final Creator<Instructor> CREATOR = new Creator<Instructor>() {
         @Override
@@ -19,8 +21,12 @@ public class Instructor extends User {
             return new Instructor[size];
         }
     };
+    @JsonField
     public String instructorId;
+    @JsonField
     public Department department;
+    @JsonField
+    @JsonIgnore(ignorePolicy = JsonIgnore.IgnorePolicy.SERIALIZE_ONLY)
     public List<Section> sections;
 
     public Instructor(String email, String password, String firstName, String lastName, String instructorId, kemoke.ius.studentsystemandroid.models.Department department) {

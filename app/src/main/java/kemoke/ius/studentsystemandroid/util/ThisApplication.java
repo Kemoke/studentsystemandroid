@@ -2,9 +2,15 @@ package kemoke.ius.studentsystemandroid.util;
 
 import android.app.Application;
 
+import com.bluelinelabs.logansquare.LoganSquare;
+
 import kemoke.ius.studentsystemandroid.api.HttpApi;
+import kemoke.ius.studentsystemandroid.models.CurriculumCourse;
 import kemoke.ius.studentsystemandroid.models.User;
 
+/**
+ * Holds global application data and used for initialization
+ */
 public class ThisApplication extends Application {
     private static ThisApplication application;
 
@@ -28,12 +34,13 @@ public class ThisApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        isInit = true;
         application = this;
+        LoganSquare.registerTypeConverter(CurriculumCourse.ElectiveType.class, new EnumConverter());
         prefs = new ApplicationPrefs(this);
         token = prefs.get("token");
         userType = prefs.get("usertype");
         HttpApi.init(this);
+        isInit = true;
     }
 
     public User getUser() {

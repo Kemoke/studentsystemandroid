@@ -38,7 +38,7 @@ public class GradeListAdapter extends RecyclerView.Adapter<GradeListAdapter.View
         return grades.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.type)
         TextView type;
         @BindView(R.id.value)

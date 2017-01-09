@@ -94,7 +94,7 @@ public class CourseListAdapter extends RecyclerView.Adapter<CourseListAdapter.Vi
         return sections.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.name)
         TextView name;
         @BindView(R.id.instructor)

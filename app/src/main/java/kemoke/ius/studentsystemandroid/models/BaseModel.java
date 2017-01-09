@@ -3,7 +3,13 @@ package kemoke.ius.studentsystemandroid.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
+
+@JsonObject
 public abstract class BaseModel implements Parcelable {
+
+    @JsonField
     public int id;
 
     public BaseModel() {

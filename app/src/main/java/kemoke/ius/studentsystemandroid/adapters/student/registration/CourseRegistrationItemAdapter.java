@@ -64,7 +64,7 @@ public class CourseRegistrationItemAdapter extends RecyclerView.Adapter<CourseRe
         return courses.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.course_name)
         TextView courseName;
         @BindView(R.id.register_button)

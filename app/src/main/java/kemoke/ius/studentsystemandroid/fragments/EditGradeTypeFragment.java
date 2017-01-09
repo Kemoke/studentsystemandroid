@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatDialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 
 import butterknife.BindView;
@@ -18,6 +20,9 @@ import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.activities.instructor.GradeTypeActivity;
 import kemoke.ius.studentsystemandroid.models.GradeType;
 
+/**
+ * Fragment that contains view for editing a grade type
+ */
 @SuppressWarnings("ConstantConditions")
 @SuppressLint("InflateParams")
 public class EditGradeTypeFragment extends AppCompatDialogFragment {
@@ -36,11 +41,17 @@ public class EditGradeTypeFragment extends AppCompatDialogFragment {
         activity = (GradeTypeActivity) context;
     }
 
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = LayoutInflater.from(activity).inflate(R.layout.fragment_edit_grade_type, null, false);
+        ButterKnife.bind(this, view);
+        return view;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.fragment_edit_grade_type, null, false);
-        ButterKnife.bind(this, view);
         isEdit = getArguments().containsKey("gradeType");
         final String title = getArguments().getString("title");
         if (isEdit) {
@@ -52,7 +63,7 @@ public class EditGradeTypeFragment extends AppCompatDialogFragment {
             gradeType.section = getArguments().getParcelable("section");
         }
         return new AlertDialog.Builder(activity)
-                .setView(view)
+                .setView(getView())
                 .setPositiveButton("Save", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

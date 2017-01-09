@@ -49,7 +49,7 @@ public class DepartmentListAdapter extends CrudAdapter<DepartmentListAdapter.Vie
         return new Filter();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener{
         @BindView(R.id.dept_list_name)
         TextView nameText;
 

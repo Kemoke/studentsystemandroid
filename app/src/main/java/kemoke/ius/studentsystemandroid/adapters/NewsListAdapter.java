@@ -68,7 +68,7 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.ViewH
         return articles.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.newsImage)
         ImageView image;
         @BindView(R.id.newsTitle)

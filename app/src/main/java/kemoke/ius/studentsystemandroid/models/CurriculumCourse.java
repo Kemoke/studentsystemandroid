@@ -2,15 +2,20 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonValue;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class CurriculumCourse extends BaseModel {
+    @JsonField
     public int year;
+    @JsonField
     public int semester;
+    @JsonField
     public ElectiveType elective;
+    @JsonField
     public Program program;
+    @JsonField
     public Course course;
 
     public CurriculumCourse() {
@@ -66,11 +71,6 @@ public class CurriculumCourse extends BaseModel {
         No,
         University,
         Faculty,
-        Program;
-
-        @JsonValue
-        public int value(){
-            return ordinal();
-        }
+        Program
     }
 }

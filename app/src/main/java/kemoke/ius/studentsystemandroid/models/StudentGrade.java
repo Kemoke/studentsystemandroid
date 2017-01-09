@@ -2,9 +2,10 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class StudentGrade extends BaseModel {
     public static final Creator<StudentGrade> CREATOR = new Creator<StudentGrade>() {
         @Override
@@ -17,8 +18,11 @@ public class StudentGrade extends BaseModel {
             return new StudentGrade[size];
         }
     };
+    @JsonField
     public int score;
+    @JsonField
     public GradeType gradeType;
+    @JsonField
     public Student student;
 
     public StudentGrade(int score, kemoke.ius.studentsystemandroid.models.GradeType gradeType, kemoke.ius.studentsystemandroid.models.Student student) {

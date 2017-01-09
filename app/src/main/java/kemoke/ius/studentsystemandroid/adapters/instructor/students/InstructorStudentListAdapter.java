@@ -50,7 +50,7 @@ public class InstructorStudentListAdapter extends CrudAdapter<InstructorStudentL
         return new Filter();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.name)
         TextView name;
         @BindView(R.id.studentId)

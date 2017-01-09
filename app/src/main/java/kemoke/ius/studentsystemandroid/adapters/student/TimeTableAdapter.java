@@ -67,7 +67,7 @@ public class TimeTableAdapter extends RecyclerView.Adapter<TimeTableAdapter.View
         return 11;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.hourLabel)
         TextView hourLabel;
         @BindView(R.id.monLabel)

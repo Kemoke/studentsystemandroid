@@ -2,9 +2,10 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class TimeIndex extends BaseModel {
     public static final Creator<TimeIndex> CREATOR = new Creator<TimeIndex>() {
         @Override
@@ -17,9 +18,13 @@ public class TimeIndex extends BaseModel {
             return new TimeIndex[size];
         }
     };
+    @JsonField
     public int day;
+    @JsonField
     public int startTime;
+    @JsonField
     public int endTime;
+    @JsonField
     public Section section;
 
     public TimeIndex(int day, int startTime, int endTime, kemoke.ius.studentsystemandroid.models.Section section) {

@@ -51,7 +51,7 @@ public class CourseListAdapter extends CrudAdapter<CourseListAdapter.ViewHolder,
         return new Filter();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
         @BindView(R.id.code)
         TextView code;
         @BindView(R.id.name)

@@ -16,6 +16,8 @@ import android.widget.Spinner;
 import kemoke.ius.studentsystemandroid.R;
 import kemoke.ius.studentsystemandroid.models.CurriculumCourse;
 
+import static butterknife.ButterKnife.findById;
+
 /**
  * Fragment that defines dialog view for setting Course properties when adding them into Curriculum
  */
@@ -31,9 +33,9 @@ public class CurriculumAddFragment extends AppCompatDialogFragment {
         builder.setTitle("Add Course");
         View alertView = LayoutInflater.from(getContext()).inflate(R.layout.dialog_add_curriculum, null, false);
         builder.setView(alertView);
-        final EditText year = (EditText) alertView.findViewById(R.id.year);
-        final EditText semester = (EditText) alertView.findViewById(R.id.semester);
-        final Spinner elective = (Spinner) alertView.findViewById(R.id.elective);
+        final EditText year = findById(alertView, R.id.year);
+        final EditText semester = findById(alertView, R.id.semester);
+        final Spinner elective = findById(alertView, R.id.elective);
         elective.setAdapter(new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, new String[]{"No", "University", "Faculty", "Program"}));
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override

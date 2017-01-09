@@ -1,11 +1,9 @@
 package kemoke.ius.studentsystemandroid.adapters.student.registration;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.support.v7.widget.AppCompatTextView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,7 +49,7 @@ public class CourseRegistrationAdapter extends RecyclerView.Adapter<CourseRegist
     public void updateCourses(List<CurriculumCourse> curriculumCourses) {
         clearCategories();
         for (CurriculumCourse curriculumCourse : curriculumCourses) {
-            courseCategories[curriculumCourse.elective.value()].add(curriculumCourse.course);
+            courseCategories[curriculumCourse.elective.ordinal()].add(curriculumCourse.course);
         }
         for (int i = 0; i < 4; i++) {
             courseAdapters[i].notifyDataSetChanged();
@@ -100,18 +98,12 @@ public class CourseRegistrationAdapter extends RecyclerView.Adapter<CourseRegist
         holder.list.setLayoutManager(new LinearLayoutManager(context));
     }
 
-    private int convertDpToPixel(int dp, Context context){
-        Resources resources = context.getResources();
-        DisplayMetrics metrics = resources.getDisplayMetrics();
-        return dp * (metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-    }
-
     @Override
     public int getItemCount() {
         return 4;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.label)
         AppCompatTextView label;
         @BindView(R.id.list)

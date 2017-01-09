@@ -81,7 +81,7 @@ public class GradeTypeAdapter extends RecyclerView.Adapter<GradeTypeAdapter.View
         this.onDeleteListener = onDeleteListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.name)
         TextView name;
         @BindView(R.id.weight)

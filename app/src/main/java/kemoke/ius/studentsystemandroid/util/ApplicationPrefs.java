@@ -5,14 +5,15 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.type.CollectionType;
+import com.bluelinelabs.logansquare.LoganSquare;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Helper class for handling application preferences
+ */
 public class ApplicationPrefs {
     private SharedPreferences preferences;
     private SharedPreferences.Editor editor;
@@ -23,27 +24,24 @@ public class ApplicationPrefs {
         editor = preferences.edit();
     }
 
-    public <T> void saveList(List<T> list, String tag){
-        ObjectMapper mapper = new ObjectMapper();
+    public <T> void saveList(List<T> list, String tag) {
         try {
-            String listJson = mapper.writeValueAsString(list);
+            String listJson = LoganSquare.serialize(list);
             editor.putString(tag, listJson);
             editor.apply();
-        } catch (JsonProcessingException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public <T> List<T> getList(Class<T> clazz, String tag){
-        ObjectMapper mapper = new ObjectMapper();
-        String listJson = preferences.getString(tag, "[]");
-        CollectionType type = mapper.getTypeFactory().constructCollectionType(ArrayList.class, clazz);
         try {
-            return mapper.readValue(listJson, type);
+            String json = preferences.getString(tag, "[]");
+            return LoganSquare.parseList(json, clazz);
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return new ArrayList<>();
     }
 
     public void add(String tag, String content){

@@ -2,18 +2,30 @@ package kemoke.ius.studentsystemandroid.models;
 
 import android.os.Parcel;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.bluelinelabs.logansquare.annotation.JsonField;
+import com.bluelinelabs.logansquare.annotation.JsonIgnore;
+import com.bluelinelabs.logansquare.annotation.JsonObject;
 
 import java.util.List;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonObject
 public class Section extends BaseModel {
+    @JsonField
     public int number;
+    @JsonField
     public int capacity;
+    @JsonField
     public Course course;
+    @JsonField
     public Instructor instructor;
+    @JsonField
+    @JsonIgnore(ignorePolicy = JsonIgnore.IgnorePolicy.SERIALIZE_ONLY)
     public List<GradeType> gradeTypes;
+    @JsonField
+    @JsonIgnore(ignorePolicy = JsonIgnore.IgnorePolicy.SERIALIZE_ONLY)
     public List<Student> students;
+    @JsonField
+    @JsonIgnore(ignorePolicy = JsonIgnore.IgnorePolicy.SERIALIZE_ONLY)
     public List<TimeIndex> timeTable;
 
     public Section(int number, int capacity, kemoke.ius.studentsystemandroid.models.Course course, kemoke.ius.studentsystemandroid.models.Instructor instructor, List<TimeIndex> timeTable) {

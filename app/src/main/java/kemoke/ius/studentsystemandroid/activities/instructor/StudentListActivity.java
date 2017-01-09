@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ import kemoke.ius.studentsystemandroid.models.Section;
 import kemoke.ius.studentsystemandroid.models.Student;
 import kemoke.ius.studentsystemandroid.util.callback.BaseCallback;
 
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "FieldCanBeLocal"})
 public class StudentListActivity extends AppCompatActivity {
     @BindView(R.id.list_view)
     RecyclerView listView;
@@ -44,6 +45,7 @@ public class StudentListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        addButton.setVisibility(View.GONE);
         progressDialog = new ProgressDialog(this);
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);

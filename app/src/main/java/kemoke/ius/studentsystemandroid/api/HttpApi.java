@@ -2,6 +2,8 @@ package kemoke.ius.studentsystemandroid.api;
 
 import android.content.Context;
 
+import com.github.aurae.retrofit2.LoganSquareConverterFactory;
+
 import kemoke.ius.studentsystemandroid.api.crud.CourseApi;
 import kemoke.ius.studentsystemandroid.api.crud.DepartmentApi;
 import kemoke.ius.studentsystemandroid.api.crud.InstructorApi;
@@ -10,12 +12,10 @@ import kemoke.ius.studentsystemandroid.api.crud.SectionApi;
 import kemoke.ius.studentsystemandroid.api.crud.StudentApi;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
-import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 /**
  * Contains retrofit implementations for api services.
- * Uses singleton pattern.
  */
 @SuppressWarnings("unused")
 public class HttpApi {
@@ -40,7 +40,7 @@ public class HttpApi {
         retrofit = new Retrofit.Builder().baseUrl("https://api.sis.kemoke.net")
                 .client(httpClient)
                 .addConverterFactory(ScalarsConverterFactory.create())
-                .addConverterFactory(JacksonConverterFactory.create())
+                .addConverterFactory(LoganSquareConverterFactory.create())
                 .build();
         isInit = true;
     }
